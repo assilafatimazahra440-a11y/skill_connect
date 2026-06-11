@@ -1,14 +1,4 @@
 <?php
-// =============================================
-// RATE THE TEACHER
-// =============================================
-// The learner (sender) visits this page after
-// a completed exchange to give the teacher
-// a 1–5 star rating + optional comment.
-//
-// URL example: rate.php?request_id=3&teacher_id=1
-// =============================================
-
 $page_title  = "Rate the Teacher";
 $active_page = "requests";
 $is_subpage  = true;
@@ -22,10 +12,10 @@ $my_id      = $_SESSION['user_id'];
 $request_id = intval($_GET['request_id'] ?? 0);
 $teacher_id = intval($_GET['teacher_id'] ?? 0);
 
-// -----------------------------------------------
+
 // Validate: the request must exist, be completed,
 // and I must be the SENDER (learner)
-// -----------------------------------------------
+
 $stmt = mysqli_prepare($conn,
     "SELECT sr.*, u.name AS teacher_name
      FROM skill_requests sr
@@ -78,7 +68,6 @@ require_once '../includes/header.php';
             <input type="hidden" name="teacher_id" value="<?= $teacher_id ?>">
 
             <!-- Star Rating -->
-            <!-- CSS trick: stars are in REVERSE order so clicking works correctly -->
             <div class="form-group">
                 <label>Your Rating *</label>
                 <div class="star-rating">

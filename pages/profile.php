@@ -1,10 +1,4 @@
 <?php
-// =============================================
-// PROFILE PAGE
-// =============================================
-// Shows the logged-in user's profile and
-// lets them edit their name, bio, and skills.
-// =============================================
 
 $page_title  = "My Profile";
 $active_page = "profile";
@@ -19,9 +13,8 @@ $my_id  = $_SESSION['user_id'];
 $error   = "";
 $success = "";
 
-// -----------------------------------------------
 // Handle profile update form submission
-// -----------------------------------------------
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $name        = trim($_POST['name']);

@@ -1,10 +1,4 @@
 <?php
-// =============================================
-// LEADERBOARD PAGE
-// =============================================
-// Shows top users sorted by points OR reputation.
-// User picks which via a simple link switch.
-// =============================================
 
 $page_title  = "Leaderboard";
 $active_page = "leaderboard";

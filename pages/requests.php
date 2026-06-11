@@ -1,8 +1,4 @@
 <?php
-// =============================================
-// REQUESTS PAGE
-// =============================================
-
 $page_title  = "My Requests";
 $active_page = "requests";
 $is_subpage  = true;
@@ -92,9 +88,9 @@ require_once '../includes/header.php';
     <?php endif; ?>
 
 
-    <!-- =========================================
+    <!--
          SECTION 1: INCOMING PENDING
-    ========================================= -->
+   -->
     <div class="section-title">
         <i class="fa-solid fa-inbox" style="color:#FFC857;"></i>
         Incoming Requests
@@ -158,9 +154,9 @@ require_once '../includes/header.php';
     <?php endif; ?>
 
 
-    <!-- =========================================
+    <!-- 
          SECTION 2: ONGOING EXCHANGES
-    ========================================= -->
+     -->
     <div class="section-title" style="margin-top:32px;">
         <i class="fa-solid fa-handshake" style="color:#6C63FF;"></i>
         Ongoing Exchanges
@@ -206,9 +202,9 @@ require_once '../includes/header.php';
     <?php endif; ?>
 
 
-    <!-- =========================================
+    <!--
          SECTION 3: MY SENT PENDING
-    ========================================= -->
+   -->
     <div class="section-title" style="margin-top:32px;">
         <i class="fa-solid fa-paper-plane" style="color:#718096;"></i>
         Sent Requests
@@ -251,9 +247,9 @@ require_once '../includes/header.php';
     <?php endif; ?>
 
 
-    <!-- =========================================
+    <!-- 
          SECTION 4: COMPLETED HISTORY
-    ========================================= -->
+    -->
     <div class="section-title" style="margin-top:32px;">
         <i class="fa-solid fa-circle-check" style="color:#4CAF50;"></i>
         Completed Exchanges

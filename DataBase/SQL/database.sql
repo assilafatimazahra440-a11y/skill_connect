@@ -1,7 +1,5 @@
-
 CREATE DATABASE IF NOT EXISTS skill_connect;
 USE skill_connect;
-
 
 CREATE TABLE users (
     id          INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,19 +13,20 @@ CREATE TABLE users (
     points      INT           DEFAULT 100,   
     reputation  DECIMAL(3,1)  DEFAULT 0.0,   
     badge       VARCHAR(50)   DEFAULT 'Beginner',
-    completed   INT           DEFAULT 0,    
+    completed   INT           DEFAULT 0,     
     created_at  TIMESTAMP     DEFAULT CURRENT_TIMESTAMP
 );
 
 
 CREATE TABLE skill_requests (
     id           INT AUTO_INCREMENT PRIMARY KEY,
-    sender_id    INT          NOT NULL,      
-    receiver_id  INT          NOT NULL,      
-    message      TEXT,                       
+    sender_id    INT          NOT NULL,     
+    receiver_id  INT          NOT NULL,     
+    message      TEXT,                      
     status       ENUM('pending','accepted','completed','cancelled') DEFAULT 'pending',
     created_at   TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
 
+    
     FOREIGN KEY (sender_id)   REFERENCES users(id),
     FOREIGN KEY (receiver_id) REFERENCES users(id)
 );
@@ -35,14 +34,14 @@ CREATE TABLE skill_requests (
 
 CREATE TABLE ratings (
     id          INT AUTO_INCREMENT PRIMARY KEY,
-    request_id  INT          NOT NULL,       
-    rater_id    INT          NOT NULL,       
-    rated_id    INT          NOT NULL,       
-    stars       INT          NOT NULL,       
-    comment     TEXT,                        
+    request_id  INT          NOT NULL,      
+    rater_id    INT          NOT NULL,      
+    rated_id    INT          NOT NULL,      
+    stars       INT          NOT NULL,      
+    comment     TEXT,                       
     created_at  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
 
-  
+    
     FOREIGN KEY (request_id) REFERENCES skill_requests(id),
     FOREIGN KEY (rater_id)   REFERENCES users(id),
     FOREIGN KEY (rated_id)   REFERENCES users(id)
@@ -133,4 +132,3 @@ INSERT INTO ratings (request_id, rater_id, rated_id, stars, comment) VALUES
 (2, 4, 2, 4, 'Ahmed explains Python really well. I learned a lot!'),
 (3, 5, 3, 5, 'Youssef is the best Excel teacher. Highly recommended!'),
 (4, 1, 4, 4, 'Salma made a beautiful design. Very talented!');
-

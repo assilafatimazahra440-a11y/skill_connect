@@ -1,8 +1,4 @@
 <?php
-// =============================================
-// USERS PAGE — Browse all users
-// =============================================
-
 $page_title  = "Browse Users";
 $active_page = "users";
 $is_subpage  = true;

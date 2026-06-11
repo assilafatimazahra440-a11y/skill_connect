@@ -1,8 +1,4 @@
 <?php
-// =============================================
-// REGISTER PAGE
-// =============================================
-
 session_start();
 
 // If already logged in, go to dashboard
