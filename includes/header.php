@@ -30,8 +30,13 @@ $root    = $is_root ? './' : '../';
         <i class="fa-solid fa-bolt"></i> Skill<span>Connect</span>
     </a>
 
+    <!-- Hamburger button (visible on mobile only) -->
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+        <i class="fa-solid fa-bars" id="nav-toggle-icon"></i>
+    </button>
+
     <!-- Nav links -->
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-menu">
         <li>
             <a href="<?= $root ?>index.php"
                class="<?= (isset($active_page) && $active_page === 'home') ? 'active' : '' ?>">
@@ -69,4 +74,26 @@ $root    = $is_root ? './' : '../';
         </li>
     </ul>
 </nav>
+
+<script>
+(function () {
+    var toggle = document.getElementById('nav-toggle');
+    var menu   = document.getElementById('nav-menu');
+    var icon   = document.getElementById('nav-toggle-icon');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', function () {
+        var isOpen = menu.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+    // Close menu when a link is clicked
+    menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            menu.classList.remove('nav-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            icon.className = 'fa-solid fa-bars';
+        });
+    });
+}());
+</script>
 

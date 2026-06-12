@@ -56,7 +56,7 @@ require_once '../includes/header.php';
     <p class="page-subtitle">The most active and skilled members of the community.</p>
 
     <!-- Sort toggle -->
-    <div style="display:flex; gap:10px; margin-bottom:24px;">
+    <div class="sort-toggle">
         <a href="leaderboard.php?sort=points"
            class="btn <?= $sort === 'points' ? 'btn-primary' : 'btn-secondary' ?>">
             <i class="fa-solid fa-coins"></i> By Points
@@ -68,6 +68,7 @@ require_once '../includes/header.php';
     </div>
 
     <!-- Leaderboard Table -->
+    <div class="table-scroll-wrapper">
     <table class="leaderboard-table">
         <thead>
             <tr>
@@ -142,6 +143,7 @@ require_once '../includes/header.php';
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div><!-- /.table-scroll-wrapper -->
 
 </div>
 

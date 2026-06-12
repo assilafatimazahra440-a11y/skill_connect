@@ -223,9 +223,9 @@ a:hover {
 .badge-mentor       { background: #fff3e0; color: #e65100; }
 .badge-expert       { background: #fce4ec; color: #c62828; }
 
-/* =============================================
+/* 
    BUTTONS
-============================================= */
+ */
 .btn {
     display: inline-block;
     padding: 9px 20px;
@@ -589,34 +589,195 @@ a:hover {
 }
 
 /* 
-   RESPONSIVE — MOBILE
+   RESPONSIVE
 */
-@media (max-width: 600px) {
+
+/* 
+   SORT TOGGLE (leaderboard filter bar)
+ */
+.sort-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+/*
+   TABLE SCROLL WRAPPER (leaderboard)
+*/
+.table-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Preserve the table's rounded corners via the wrapper */
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+/* Remove box-shadow & border-radius from the table itself since the
+   wrapper now provides them — desktop appearance is unchanged */
+.table-scroll-wrapper .leaderboard-table {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/*
+   HAMBURGER TOGGLE BUTTON — hidden on desktop, shown on mobile
+*/
+.nav-toggle {
+    display: none; /* hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.35rem;
+    color: #2D3748;
+    padding: 6px 8px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    line-height: 1;
+}
+
+.nav-toggle:hover {
+    background-color: #F4F7FB;
+    color: #6C63FF;
+}
+
+/*
+   TABLET  ≤ 768 px
+*/
+@media (max-width: 768px) {
+
+    /* ── Navbar ── */
     .navbar {
-        padding: 0 16px;
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 65px;
+        padding: 0 20px;
+        gap: 0;
+        align-items: center;
     }
+
     .navbar .nav-links {
+        flex-wrap: wrap;
         gap: 4px;
     }
+
     .navbar .nav-links a {
-        padding: 6px 8px;
-        font-size: 0.8rem;
+        padding: 7px 11px;
+        font-size: 0.85rem;
     }
+
+    /* ── Leaderboard: hide "Teaches" column at tablet width ── */
+    .leaderboard-table th:nth-child(3),
+    .leaderboard-table td:nth-child(3) {
+        display: none;
+    }
+}
+
+/*
+   MOBILE  ≤ 600 px
+ */
+@media (max-width: 600px) {
+
+    /* ── Navbar: hamburger mode ── */
+    .navbar {
+        padding: 0 16px;
+        height: 60px;
+        position: relative;
+    }
+
+    /* Show the hamburger button */
+    .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        order: 2; /* sits after logo */
+    }
+
+    /* Nav menu: hidden by default, slides down when .nav-open is toggled */
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        /* Expand below the navbar bar */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #ffffff;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+        padding: 12px 16px 16px;
+        z-index: 99;
+        list-style: none;
+    }
+
+    /* Open state — toggled by JS */
+    .navbar .nav-links.nav-open {
+        display: flex;
+    }
+
+    /* Full-width link rows inside the mobile menu */
+    .navbar .nav-links li {
+        width: 100%;
+    }
+
+    .navbar .nav-links a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 14px;
+        font-size: 0.95rem;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    /* Logo sizing */
+    .navbar .logo {
+        font-size: 1.2rem;
+    }
+
+    /* ── General container ── */
     .container {
         padding: 16px 12px;
     }
+
     .form-card {
         padding: 24px 18px;
         margin: 20px auto;
     }
+
     .users-grid {
         grid-template-columns: 1fr;
     }
+
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .profile-header {
         flex-direction: column;
         text-align: center;
     }
+
+    /* ── Leaderboard ── */
+
+    /* Also hide "Badge" column on mobile */
+    .leaderboard-table th:nth-child(4),
+    .leaderboard-table td:nth-child(4) {
+        display: none;
+    }
+
+    /* Tighten cell padding for remaining 4 columns */
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 12px 10px;
+        font-size: 0.82rem;
+    }
+
+    /* ── Page title ── */
+    .page-title {
+        font-size: 1.4rem;
+    }
 }
+
